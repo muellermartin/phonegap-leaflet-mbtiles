@@ -4,10 +4,13 @@
 	<description>
 		Hello World sample application that responds to the deviceready event.
 	</description>
-	<author email="support@phonegap.com" href="http://phonegap.com">
-		PhoneGap Team
+	<author email="mail@mueller-martin.net" href="http://mueller-martin.net">
+		Martin Müller
 	</author>
 	<feature name="http://api.phonegap.com/1.0/device" />
+	<feature name="File">
+		<param name="ios-package" value="CDVFile" />
+	</feature>
 	<preference name="permissions" value="none" />
 	<preference name="orientation" value="default" />
 	<preference name="target-device" value="universal" />

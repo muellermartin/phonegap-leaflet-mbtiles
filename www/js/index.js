@@ -1,3 +1,4 @@
+var fs;
 var app = {
 	// Application Constructor
 	initialize: function() {
@@ -27,6 +28,21 @@ var app = {
 		receivedElement.setAttribute('style', 'display:block;');
 
 		console.log('Received Event: ' + id);
+
+		// Request filesystem
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, app.onFileSystemSuccess, app.onFileSystemError);
+
+		var map = L.map('map').setView([51.505, -0.09], 13);
+	},
+
+	onFileSystemSuccess: function(fileSystem) {
+		console.log('File system name: ' + fileSystem.name);
+		console.log('File system root name: ' + fileSystem.root.name);
+		fs = fileSystem;
+	},
+
+	onFileSystemError: function(event) {
+		console.log('Failed to initialze file system');
 	}
 };
 
