@@ -20,7 +20,6 @@ L.TileLayer.MBTiles = L.TileLayer.extend({
 			tx.executeSql('SELECT tile_data FROM tiles WHERE zoom_level = ? AND tile_column = ? AND tile_row = ?', [z, x, y], function (tx, result) {
 				console.log('SQL query executed successfully!');
 				tile.src = 'data:image/png;base64,' + result.rows.item(0).tile_data;
-				//tile.src = 'http://localhost/~martin/test.png';
 			}, function (tx, error){
 				console.log('ERROR: ' + error.message);
 			});
@@ -31,7 +30,6 @@ L.TileLayer.MBTiles = L.TileLayer.extend({
 		tile._layer = this;
 		tile.onload = this._tileOnLoad;
 		tile.onerror = this._tileOnError;
-		//tile.src = 'http://localhost/~martin/test.png';
 		this._adjustTilePoint(tilePoint);
 		this.getTileUrl(tilePoint, tile);
 	}

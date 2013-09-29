@@ -20,6 +20,7 @@ var app = {
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
+		// Only for debugging the deviceready state
 		var parentElement = document.getElementById(id);
 		var listeningElement = parentElement.querySelector('.listening');
 		var receivedElement = parentElement.querySelector('.received');
@@ -28,11 +29,6 @@ var app = {
 		receivedElement.setAttribute('style', 'display:block;');
 
 		console.log('Received Event: ' + id);
-
-		if(!fs)
-			console.log('fs in uninitialized - that\'s good!');
-		else
-			console.log('shit: can\'t check if fs is initialized');
 
 		// Request filesystem
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, app.onFileSystemSuccess, app.onFileSystemError);
